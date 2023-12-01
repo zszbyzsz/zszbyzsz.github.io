@@ -8,7 +8,7 @@
     <link href="/2023/12/01/%E6%95%B0%E6%8D%AE%E8%BF%AD%E4%BB%A3%E5%99%A8/"/>
     <url>/2023/12/01/%E6%95%B0%E6%8D%AE%E8%BF%AD%E4%BB%A3%E5%99%A8/</url>
     
-    <content type="html"><![CDATA[]]></content>
+    <content type="html"><![CDATA[<pre class="mermaid">classDiagramClass01 <|-- AveryLongClass : CoolClass03 *-- Class04Class05 o-- Class06Class07 .. Class08Class09 --> C2 : Where am i?Class09 --* C3Class09 --|> Class07Class07 : equals()Class07 : Object[] elementDataClass01 : size()Class01 : int chimpClass01 : int gorillaClass08 <--> C2: Cool label</pre>]]></content>
     
     
     
