@@ -253,6 +253,46 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2023/12/01/%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B/" target="_self">
+          预训练模型整体流程
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2023/12/01/%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B/" target="_self">
+        <div>
+          graph TB A(载入预训练模型) --> B(重载模型) B --加入--> C(学习率) B --加入--> D(优化器) B --加入--> E(损失函数) C --> F(初始化热身) D --> F(初始化热身) E --> F(初始化热身) F --> G(热身结束，更新参数) subgraph 每个epoch    G --> H(计算损失)    H --更新--> H end
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-01 17:10" pubdate>
+              2023-12-01
+            </time>
+          </div>
+        
+        
+        
+          <div class="post-meta">
+            <i class="iconfont icon-tags"></i>
+            
+              <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/">#工程实践</a>
+            
+          </div>
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2023/12/01/%E6%95%B0%E6%8D%AE%E8%BF%AD%E4%BB%A3%E5%99%A8/" target="_self">
           数据迭代器
         </a>

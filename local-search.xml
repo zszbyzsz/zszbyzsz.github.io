@@ -4,6 +4,25 @@
   
   
   <entry>
+    <title>预训练模型整体流程</title>
+    <link href="/2023/12/01/%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B/"/>
+    <url>/2023/12/01/%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B/</url>
+    
+    <content type="html"><![CDATA[<pre class="mermaid">graph TBA(载入预训练模型) --> B(重载模型)B --加入--> C(学习率)B --加入--> D(优化器)B --加入--> E(损失函数)C --> F(初始化热身)D --> F(初始化热身)E --> F(初始化热身)F --> G(热身结束，更新参数)subgraph 每个epoch   G --> H(计算损失)   H --更新--> HendH --> I(结束)</pre>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>工程实践</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>数据迭代器</title>
     <link href="/2023/12/01/%E6%95%B0%E6%8D%AE%E8%BF%AD%E4%BB%A3%E5%99%A8/"/>
     <url>/2023/12/01/%E6%95%B0%E6%8D%AE%E8%BF%AD%E4%BB%A3%E5%99%A8/</url>
