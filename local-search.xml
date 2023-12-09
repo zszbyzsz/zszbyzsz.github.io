@@ -4,11 +4,37 @@
   
   
   <entry>
+    <title>BERT-下游任务</title>
+    <link href="/2023/12/09/BERT-%E4%B8%8B%E6%B8%B8%E4%BB%BB%E5%8A%A1/"/>
+    <url>/2023/12/09/BERT-%E4%B8%8B%E6%B8%B8%E4%BB%BB%E5%8A%A1/</url>
+    
+    <content type="html"><![CDATA[<p><img src="next_works.png" alt="下游任务"></p><p>微调：</p><h2 id="1-输入：">1. 输入：</h2><p>句子的输入要选择词嵌入Bert选择了WordPiece进行子词词元化。要满足Bert的要求</p><h3 id="1-1-标记嵌入：">1.1 标记嵌入：</h3><p>[CLS]句子[SEP]</p><h3 id="1-2-分段嵌入">1.2 分段嵌入</h3><p>[CLS]句子1[SEP]句子2[SEP]</p><h3 id="1-3-位置嵌入">1.3 位置嵌入</h3><p>给出词序的具体位置信息</p><p>最后将上面的三个特征进行相加，即为输入特征，输入到Bert中。</p><h2 id="2-完成的下游任务：">2. 完成的下游任务：</h2><p>句子经过Bert的token器后执行下列动作：</p><h3 id="1-文本分类">1. 文本分类</h3><p>输入：单句话：[CLS]句子[SEP]<br>输出：将输出的[CLS]经过softmax函数送入结果分类器。</p><h3 id="2-自然语言推理">2. 自然语言推理</h3><p>输入：单句话：[CLS]句子1[SEP]句子2[SEP]<br>输出：将输出的[CLS]经过softmax函数送入结果分类器。</p><h3 id="3-机器问答">3. 机器问答</h3><p>输入：单句话：[CLS]句子1[SEP]句子2[SEP]<br>输出：将输出的问答句子[SEP]句子2[SEP],使用softmax后计算答案的起始位置与结束位置</p><h3 id="4-命名实体识别">4. 命名实体识别</h3><p>输入：单句话：[CLS]句子[SEP]<br>输出：所有特征经softmax后送入分类器中</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>BERT-框架</title>
+    <link href="/2023/12/09/BERT-%E6%A1%86%E6%9E%B6/"/>
+    <url>/2023/12/09/BERT-%E6%A1%86%E6%9E%B6/</url>
+    
+    <content type="html"><![CDATA[<p>Bert将Transformer左半边的Encoder拿出来进行单独训练，来生成预训练模型。GPT是将Transformers右半边Decoder拿出来进行预训练。整体的框架如下：<br><img src="bert_framworks.jpg" alt="bert-framewoek"></p><h2 id="1-输入：">1. 输入：</h2><p>词嵌入Bert选择了WordPiece进行子词词元化。<br>[CLS] : 在训练前，每个句子开始时都有CLS预示输入的开始，同时也不包含任何含义。在训练后，它汇总了句子所有的特征，可以用来继续下游的分类任务等，更加公平的融入后面的语义信息。</p><h3 id="1-1-标记嵌入：">1.1 标记嵌入：</h3><p>[CLS]句子[SEP]</p><h3 id="1-2-分段嵌入">1.2 分段嵌入</h3><p>[CLS]句子1[SEP]句子2[SEP]</p><h3 id="1-3-位置嵌入">1.3 位置嵌入</h3><p>给出词序的具体位置信息</p><p>最后将上面的三个特征进行相加，即为输入特征，输入到Bert中。<br>Embedding的数学本质，就是以one hot为输入的单层全连接。<br>也就是说，世界上本没什么Embedding，有的只是one hot。</p><h2 id="2-训练">2. 训练</h2><p>使用多伦多预料库和维基百科语料库。</p><ol><li>抽取句子对：保证下一句与非下一句的比例为1：1</li><li>抽取的句子进行Word Piece分词</li><li>随机这样15%的词</li><li>参数:</li></ol><table><thead><tr><th>批大小</th><th>epoch</th><th>学习率</th><th>预热</th><th>Dropout</th><th>激活函数</th></tr></thead><tbody><tr><td>254</td><td>1000000</td><td>Adam</td><td>10000</td><td>0.1</td><td>GeLU</td></tr></tbody></table><p><strong>GELU</strong> :<br>ReLU会确定性的将输入乘上一个0或者1(当x&lt;0时乘上0，否则乘上1)，Dropout则是随机乘上0。而GELU虽然也是将输入乘上0或1，但是输入到底是乘以0还是1，是在取决于输入自身的情况下随机选择的。<br>所以，GELU的优点就是在ReLU上增加随机因素，x越小越容易被mask掉。<br><strong>预热</strong>：<br>1）这样可以使得学习率可以适应不同的训练集合size<br>实验的时候经常需要先使用小的数据集训练验证模型，然后换大的数据集做生成环境模型训练。<br>2）即使不幸学习率设置得很大，那么也能通过warmup机制看到合适的学习率区间（即训练误差先降后升的关键位置附近），以便后续验证</p><h2 id="3-结果">3. 结果</h2><table><thead><tr><th>名字</th><th>L-编码器层数</th><th>A-注意力头数</th><th>H-隐藏神经元个数</th><th>总参数量</th></tr></thead><tbody><tr><td>BERT-base</td><td>12</td><td>12</td><td>178</td><td>0.11B</td></tr><tr><td>BERT-large</td><td>24</td><td>16</td><td>1024</td><td>0.34B</td></tr></tbody></table><h2 id="优点">优点:</h2><ol><li>CBOW：将中心单词周围的n个单词（固定的片段）作为输入，然后预测中心单词。BERT使用整句预测[MASK]标记</li><li>Word2vec：只考虑局部上下文。无上下文模型，同时生成的嵌入向量与上下文无关</li><li>Transformers：引入可训练位置编码</li></ol><h2 id="缺点：">缺点：</h2><ol><li>训练参数并非最优。–&gt; Roberta</li><li>训练过程中掩码的引入和下游任务掩码的缺失有冲突 --&gt;XLNet：使用<strong>自回归</strong>代替自编码。</li><li>同时为了解决这个问题引入的的下一句预测也并不能很好处理。–ALBERT</li><li>Token处理不完全 --&gt;全词掩码</li><li>只执行一次掩码 --&gt; Roberta（动态掩码）</li><li>只能处理2个句子对。</li><li>长度限定在512个字符内</li></ol>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>关于掩码</title>
     <link href="/2023/12/09/%E5%85%B3%E4%BA%8E%E6%8E%A9%E7%A0%81/"/>
     <url>/2023/12/09/%E5%85%B3%E4%BA%8E%E6%8E%A9%E7%A0%81/</url>
     
-    <content type="html"><![CDATA[<p>掩码是为了缓解自动编码语言模型中的数据泄漏问题而提出的解决方案。</p><ol><li>随机掩码<br>bert的原始掩码策略。在一个句子中随机遮掩15%的标记单词，对这这样的15%单词进行下列操作：<ul><li>80%用[MASK]遮掩</li><li>10%随即替换成词汇表中的其他单词</li><li>不做处理<br>15%是实验的最优比例<br>2 . 全词掩码<br>3… N-gram掩码</li></ul></li></ol><p><img src="bert_framworks.jpg" alt="bert-framewoek"></p>]]></content>
+    <content type="html"><![CDATA[<p>掩码是为了缓解自动编码语言模型中的数据泄漏问题而提出的解决方案。</p><ol><li>随机掩码<br>bert的原始掩码策略。在一个句子中随机遮掩15%的标记单词，对这这样的15%单词进行下列操作：<ul><li>80%用[MASK]遮掩</li><li>10%随即替换成词汇表中的其他单词</li><li>不做处理<br>15%是实验的最优比例<br>2 . 全词掩码<br>3… N-gram掩码</li></ul></li></ol>]]></content>
     
     
     

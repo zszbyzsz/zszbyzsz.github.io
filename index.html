@@ -253,6 +253,72 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="2023/12/09/BERT-%E4%B8%8B%E6%B8%B8%E4%BB%BB%E5%8A%A1/" target="_self">
+          BERT-下游任务
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="2023/12/09/BERT-%E4%B8%8B%E6%B8%B8%E4%BB%BB%E5%8A%A1/" target="_self">
+        <div>
+          微调： 1. 输入： 句子的输入要选择词嵌入Bert选择了WordPiece进行子词词元化。要满足Bert的要求 1.1 标记嵌入： [CLS]句子[SEP] 1.2 分段嵌入 [CLS]句子1[SEP]句子2[SEP] 1.3 位置嵌入 给出词序的具体位置信息 最后将上面的三个特征进行相加，即为输入特征，输入到Bert中。 2. 完成的下游任务： 句子经过Bert的token器后执行下列动作：
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-09 18:10" pubdate>
+              2023-12-09
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="2023/12/09/BERT-%E6%A1%86%E6%9E%B6/" target="_self">
+          BERT-框架
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="2023/12/09/BERT-%E6%A1%86%E6%9E%B6/" target="_self">
+        <div>
+          Bert将Transformer左半边的Encoder拿出来进行单独训练，来生成预训练模型。GPT是将Transformers右半边Decoder拿出来进行预训练。整体的框架如下：  1. 输入： 词嵌入Bert选择了WordPiece进行子词词元化。 [CLS] : 在训练前，每个句子开始时都有CLS预示输入的开始，同时也不包含任何含义。在训练后，它汇总了句子所有的特征，可以用来继续下游的分类任
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2023-12-09 18:09" pubdate>
+              2023-12-09
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="2023/12/09/%E5%85%B3%E4%BA%8E%E6%8E%A9%E7%A0%81/" target="_self">
           关于掩码
         </a>
