@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/logo_1.png">
-  <link rel="icon" href="/img/logo_1.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="../../../../img/logo_1.png">
+  <link rel="icon" href="../../../../img/logo_1.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -16,13 +16,15 @@
   <meta name="author" content="Z">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="article">
+    <meta name="description" content="微调： 1. 输入： 词嵌入Bert选择了WordPiece进行子词词元化。要满足Bert的要求 1.1 标记嵌入： [CLS]句子[SEP] 1.2 分段嵌入 [CLS]句子1[SEP]句子2[SEP] 1.3 位置嵌入 给出词序的具体位置信息 最后将上面的三个特征进行相加，即为输入特征，输入到Bert中。">
+<meta property="og:type" content="article">
 <meta property="og:title" content="Bert-下游微调">
 <meta property="og:url" content="http://example.com/2023/12/09/Bert-%E4%B8%8B%E6%B8%B8%E5%BE%AE%E8%B0%83/index.html">
 <meta property="og:site_name" content="NLP">
+<meta property="og:description" content="微调： 1. 输入： 词嵌入Bert选择了WordPiece进行子词词元化。要满足Bert的要求 1.1 标记嵌入： [CLS]句子[SEP] 1.2 分段嵌入 [CLS]句子1[SEP]句子2[SEP] 1.3 位置嵌入 给出词序的具体位置信息 最后将上面的三个特征进行相加，即为输入特征，输入到Bert中。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-12-09T02:54:29.000Z">
-<meta property="article:modified_time" content="2023-12-09T07:07:22.537Z">
+<meta property="article:modified_time" content="2023-12-09T09:24:09.473Z">
 <meta property="article:author" content="Z">
 <meta property="article:tag" content="BERT">
 <meta name="twitter:card" content="summary_large_image">
@@ -55,12 +57,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/css/main.css" />
+<link  rel="stylesheet" href="../../../../css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="../../../../css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="../../../../css/highlight-dark.css" />
   
 
 
@@ -76,8 +78,8 @@
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
+  <script  src="../../../../js/utils.js" ></script>
+  <script  src="../../../../js/color-schema.js" ></script>
   
 
   
@@ -121,7 +123,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="../../../../index.html">
       <strong>从自然语言到0011</strong>
     </a>
 
@@ -140,7 +142,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
+              <a class="nav-link" href="../../../../index.html">
                 <i class="iconfont icon-home-fill"></i>
                 <span>首页</span>
               </a>
@@ -152,7 +154,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/">
+              <a class="nav-link" href="../../../../archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 <span>归档</span>
               </a>
@@ -164,7 +166,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
+              <a class="nav-link" href="../../../../categories/">
                 <i class="iconfont icon-category-fill"></i>
                 <span>分类</span>
               </a>
@@ -176,7 +178,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/">
+              <a class="nav-link" href="../../../../tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 <span>标签</span>
               </a>
@@ -188,7 +190,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/about/">
+              <a class="nav-link" href="../../../../about/">
                 <i class="iconfont icon-user-fill"></i>
                 <span>关于</span>
               </a>
@@ -218,7 +220,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/desk.jpg') no-repeat center center; background-size: cover;">
+     style="background: url('../../../../img/desk.jpg') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -247,7 +249,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 字
+          142 字
         
       </span>
     
@@ -258,7 +260,7 @@
         
         
         
-          1 分钟
+          2 分钟
         
       </span>
     
@@ -300,7 +302,17 @@
             
               <div class="markdown-body">
                 
-                
+                <p>微调：</p>
+<h2 id="1-输入：">1. 输入：</h2>
+<p>词嵌入Bert选择了WordPiece进行子词词元化。要满足Bert的要求</p>
+<h3 id="1-1-标记嵌入：">1.1 标记嵌入：</h3>
+<p>[CLS]句子[SEP]</p>
+<h3 id="1-2-分段嵌入">1.2 分段嵌入</h3>
+<p>[CLS]句子1[SEP]句子2[SEP]</p>
+<h3 id="1-3-位置嵌入">1.3 位置嵌入</h3>
+<p>给出词序的具体位置信息</p>
+<p>最后将上面的三个特征进行相加，即为输入特征，输入到Bert中。</p>
+
                 
               </div>
             
@@ -312,7 +324,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/BERT/" class="print-no-link">#BERT</a>
+        <a href="../../../../tags/BERT/" class="print-no-link">#BERT</a>
       
     </div>
   
@@ -369,7 +381,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/09/Bert-%E5%8F%98%E4%BD%93/" title="Bert-变体">
+                      <a href="../Bert-%E5%8F%98%E4%BD%93/" title="Bert-变体">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Bert-变体</span>
                         <span class="visible-mobile">上一篇</span>
@@ -379,7 +391,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/09/Bert-%E5%9F%BA%E6%9C%AC%E6%9E%84%E6%88%90/" title="Bert-基本构成">
+                      <a href="../Bert-%E5%9F%BA%E6%9C%AC%E6%9E%84%E6%88%90/" title="Bert-基本构成">
                         <span class="hidden-mobile">Bert-基本构成</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -542,8 +554,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+<script  src="../../../../js/events.js" ></script>
+<script  src="../../../../js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -565,7 +577,7 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    <script  src="../../../../js/img-lazyload.js" ></script>
   
 
 
@@ -664,7 +676,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/js/local-search.js" ></script>
+  <script  src="../../../../js/local-search.js" ></script>
 
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
@@ -674,7 +686,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
+<script  src="../../../../js/boot.js" ></script>
 
 
   
