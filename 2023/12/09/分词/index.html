@@ -16,24 +16,23 @@
   <meta name="author" content="Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="graph TB; A(载入预训练模型) --&gt; B(重载模型); B --加入--&gt; C(学习率); B --加入--&gt; D(优化器); B --加入--&gt; E(损失函数); C --&gt; F(初始化热身); D --&gt; F(初始化热身); E --&gt; F(初始化热身); F --&gt; G(热身结束，更新参数); subgraph 每个epoch ;    G --&gt; H(计算损失);    H -">
+    <meta name="description" content="我们要将字符映射成计算机能够识别的数字必须要经历分词这一步。本文主要讲解英文分析的主要步骤。 1. char-subwords-word 很自然的我们对每一个独立含义的英文单词独立编码，即apple. dog, chicken 他们分别拥有独立的编码，也是word级别的编码，word级别的编码可以让每个单词都有固定的符号，但是面对一个问题就是英语词库中有太多的英语单词，需要编码的量远超过计算机的运">
 <meta property="og:type" content="article">
-<meta property="og:title" content="预训练模型整体流程">
-<meta property="og:url" content="http://example.com/2023/12/01/%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B/index.html">
+<meta property="og:title" content="分词">
+<meta property="og:url" content="http://example.com/2023/12/09/%E5%88%86%E8%AF%8D/index.html">
 <meta property="og:site_name" content="NLP">
-<meta property="og:description" content="graph TB; A(载入预训练模型) --&gt; B(重载模型); B --加入--&gt; C(学习率); B --加入--&gt; D(优化器); B --加入--&gt; E(损失函数); C --&gt; F(初始化热身); D --&gt; F(初始化热身); E --&gt; F(初始化热身); F --&gt; G(热身结束，更新参数); subgraph 每个epoch ;    G --&gt; H(计算损失);    H -">
+<meta property="og:description" content="我们要将字符映射成计算机能够识别的数字必须要经历分词这一步。本文主要讲解英文分析的主要步骤。 1. char-subwords-word 很自然的我们对每一个独立含义的英文单词独立编码，即apple. dog, chicken 他们分别拥有独立的编码，也是word级别的编码，word级别的编码可以让每个单词都有固定的符号，但是面对一个问题就是英语词库中有太多的英语单词，需要编码的量远超过计算机的运">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2023-12-01T09:10:05.000Z">
-<meta property="article:modified_time" content="2023-12-01T09:55:00.184Z">
+<meta property="article:published_time" content="2023-12-09T03:11:11.000Z">
+<meta property="article:modified_time" content="2023-12-09T06:41:08.260Z">
 <meta property="article:author" content="Z">
-<meta property="article:tag" content="工程实践">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>预训练模型整体流程 - NLP</title>
+  <title>分词 - NLP</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -226,7 +225,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="预训练模型整体流程"></span>
+            <span id="subtitle" data-typed-text="分词"></span>
           
         </div>
 
@@ -237,8 +236,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-01 17:10" pubdate>
-          2023年12月1日 下午
+        <time datetime="2023-12-09 11:11" pubdate>
+          2023年12月9日 上午
         </time>
       </span>
     
@@ -249,7 +248,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          183 字
+          825 字
         
       </span>
     
@@ -260,7 +259,7 @@
         
         
         
-          2 分钟
+          7 分钟
         
       </span>
     
@@ -297,25 +296,37 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">预训练模型整体流程</h1>
+            <h1 id="seo-header">分词</h1>
             
             
               <div class="markdown-body">
                 
-                <pre class="mermaid">graph TB;
-A(载入预训练模型) --> B(重载模型);
-B --加入--> C(学习率);
-B --加入--> D(优化器);
-B --加入--> E(损失函数);
-C --> F(初始化热身);
-D --> F(初始化热身);
-E --> F(初始化热身);
-F --> G(热身结束，更新参数);
-subgraph 每个epoch ;
-   G --> H(计算损失);
-   H --更新--> H;
-end;
-H --> I(结束);</pre>
+                <p>我们要将字符映射成计算机能够识别的数字必须要经历分词这一步。本文主要讲解英文分析的主要步骤。</p>
+<h2 id="1-char-subwords-word">1. char-<strong>subwords</strong>-word</h2>
+<p>很自然的我们对每一个独立含义的英文单词独立编码，即apple. dog, chicken 他们分别拥有独立的编码，也是word级别的编码，word级别的编码可以让每个单词都有固定的符号，但是面对一个问题就是英语词库中有太多的英语单词，需要编码的量远超过计算机的运算能力。同时随着互联网的发展，新词还在不断涌现，word编码陷入窘迫。<br>
+Char编码应运而生。char编码是只对26个字母进行编码，所以可以很轻松的囊括所有现存的以及将要发展的英文语系下的单词。但是对比于word编码char编码本身没有任何含义，也就是a，b等这些没有任何含义。单纯的表达能力不强。而且char中每个字母蕴含太多语义优化起来比较困难。<br>
+介于两者之间的Subwords分词出现了。也就是子词词元化。它能够平衡词表大小与容纳的语义。并就如何进行子词词元化产生了很多方法。</p>
+<h2 id="2-subwords">2. subwords</h2>
+<h3 id="字节对编码-Byte-Pair-Encoding-BPE">字节对编码(<a target="_blank" rel="noopener" href="https://arxiv.org/abs/1508.07909">Byte-Pair Encoding</a>, BPE):</h3>
+<p><strong>GPT-2, GPT-3,LLAMA-1, LLAMA-2, Roberta, GPT-3.5?, GPT-4?</strong></p>
+<ol>
+<li>提取所有的单词并计算单词出现的次数</li>
+<li>所有的单词拆分成字符</li>
+<li>确定词表大小</li>
+<li>将非重复字母添加到词表中</li>
+<li>检查词表中出现<strong>最频繁</strong>的符号对，将其加入词表。加入此表的的符号对以一个单独的词继续参与此迭代。</li>
+<li>词表大小达到要求，停止统计</li>
+</ol>
+<h3 id="字节级字节对编码-Byte-level-BPE-BBPE">字节级字节对编码(<a href="">Byte-level BPE</a>, BBPE)</h3>
+<h3 id="WordPiece编码"><a target="_blank" rel="noopener" href="https://static.googleusercontent.com/media/research.google.com/ja//pubs/archive/37842.pdf">WordPiece</a>编码</h3>
+<p>** BERT, DistilBERT, Electra**<br>
+通过公式：<br>
+$$p(st)/p(s)p(t)$$<br>
+计算符号对s和t的<strong>相似度</strong>来决定添加的单词对，而BPE是计算符号对的频率。</p>
+<h3 id="N-gram编码"><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1804.10959.pdf">N-gram</a>编码</h3>
+<h3 id="sentence-piece">[sentence-piece]</h3>
+<h2 id="OOV问题">OOV问题</h2>
+<p>进行非字符级别编码面对的问题就是OOV问题，所给词未在词表中的问题。一般用[UNK]表示</p>
 
                 
               </div>
@@ -325,13 +336,6 @@ H --> I(结束);</pre>
               <div class="post-metas my-3">
   
   
-    <div class="post-meta">
-      <i class="iconfont icon-tags"></i>
-      
-        <a href="/tags/%E5%B7%A5%E7%A8%8B%E5%AE%9E%E8%B7%B5/" class="print-no-link">#工程实践</a>
-      
-    </div>
-  
 </div>
 
 
@@ -340,8 +344,8 @@ H --> I(结束);</pre>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>预训练模型整体流程</div>
-      <div>http://example.com/2023/12/01/预训练模型整体流程/</div>
+      <div>分词</div>
+      <div>http://example.com/2023/12/09/分词/</div>
     </div>
     <div class="license-meta">
       
@@ -353,7 +357,7 @@ H --> I(结束);</pre>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年12月1日</div>
+          <div>2023年12月9日</div>
         </div>
       
       
@@ -385,9 +389,9 @@ H --> I(结束);</pre>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/12/01/%E8%AF%AD%E8%A8%80%E7%9A%84%E8%B5%B7%E6%BA%90/" title="语言的起源">
+                      <a href="/2023/12/09/%E4%BD%8D%E7%BD%AE%E7%BC%96%E7%A0%81/" title="位置编码">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">语言的起源</span>
+                        <span class="hidden-mobile">位置编码</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -395,8 +399,8 @@ H --> I(结束);</pre>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/12/01/%E6%95%B0%E6%8D%AE%E8%BF%AD%E4%BB%A3%E5%99%A8/" title="数据迭代器">
-                        <span class="hidden-mobile">数据迭代器</span>
+                      <a href="/2023/12/09/Bert-%E5%8F%98%E4%BD%93/" title="Bert-变体">
+                        <span class="hidden-mobile">Bert-变体</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -463,21 +467,6 @@ H --> I(结束);</pre>
 
   
 
-
-
-  <script>
-  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/10.6.0/mermaid.min.js', function() {
-    mermaid.initialize({"theme":"default"});
-
-    Fluid.utils.listenDOMLoaded(function() {
-      Fluid.events.registerRefreshCallback(function() {
-        if ('mermaid' in window) {
-          mermaid.init();
-        }
-      });
-    });
-  });
-</script>
 
 
 
