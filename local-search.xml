@@ -8,7 +8,7 @@
     <link href="/2023/12/09/%E5%85%B3%E4%BA%8E%E6%8E%A9%E7%A0%81/"/>
     <url>/2023/12/09/%E5%85%B3%E4%BA%8E%E6%8E%A9%E7%A0%81/</url>
     
-    <content type="html"><![CDATA[<p>掩码是为了缓解自动编码语言模型中的数据泄漏问题而提出的解决方案。</p><ol><li>随机掩码<br>bert的原始掩码策略。在一个句子中随机遮掩15%的标记单词，对这这样的15%单词进行下列操作：<ul><li>80%用[MASK]遮掩</li><li>10%随即替换成词汇表中的其他单词</li><li>不做处理<br>15%是实验的最优比例<br>2 . 全词掩码<br>3… N-gram掩码</li></ul></li></ol>]]></content>
+    <content type="html"><![CDATA[<p>掩码是为了缓解自动编码语言模型中的数据泄漏问题而提出的解决方案。</p><ol><li>随机掩码<br>bert的原始掩码策略。在一个句子中随机遮掩15%的标记单词，对这这样的15%单词进行下列操作：<ul><li>80%用[MASK]遮掩</li><li>10%随即替换成词汇表中的其他单词</li><li>不做处理<br>15%是实验的最优比例<br>2 . 全词掩码<br>3… N-gram掩码</li></ul></li></ol><p><img src="bert_framworks.jpg" alt="bert-framewoek"></p>]]></content>
     
     
     
