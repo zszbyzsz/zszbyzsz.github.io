@@ -23,13 +23,13 @@
 <meta property="og:site_name" content="NLP">
 <meta property="og:description" content="Bert将Transformer左半边的Encoder拿出来进行单独训练，来生成预训练模型。GPT是将Transformers右半边Decoder拿出来进行预训练。整体的框架如下：  1. 输入： 词嵌入Bert选择了WordPiece进行子词词元化。 [CLS] : 在训练前，每个句子开始时都有CLS预示输入的开始，同时也不包含任何含义。在训练后，它汇总了句子所有的特征，可以用来继续下游的分类任">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2023/12/09/images/bert/bert_framworks.jpg">
+<meta property="og:image" content="http://example.com/2023/12/09/public/img/bert_framworks.jpg">
 <meta property="article:published_time" content="2023-12-09T02:54:08.000Z">
-<meta property="article:modified_time" content="2023-12-09T09:31:45.896Z">
+<meta property="article:modified_time" content="2023-12-09T09:58:12.725Z">
 <meta property="article:author" content="Z">
 <meta property="article:tag" content="BERT">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2023/12/09/images/bert/bert_framworks.jpg">
+<meta name="twitter:image" content="http://example.com/2023/12/09/public/img/bert_framworks.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -305,7 +305,7 @@
               <div class="markdown-body">
                 
                 <p>Bert将Transformer左半边的Encoder拿出来进行单独训练，来生成预训练模型。GPT是将Transformers右半边Decoder拿出来进行预训练。整体的框架如下：<br>
-<img src="../images/bert/bert_framworks.jpg" srcset="/img/loading_1.gif" lazyload alt="bert-framewoek"></p>
+<img src="/2023/12/09/Bert-%E5%9F%BA%E6%9C%AC%E6%9E%84%E6%88%90/../public/img/bert_framworks.jpg" srcset="/img/loading_1.gif" lazyload alt="bert-framewoek"></p>
 <h2 id="1-输入：">1. 输入：</h2>
 <p>词嵌入Bert选择了WordPiece进行子词词元化。<br>
 [CLS] : 在训练前，每个句子开始时都有CLS预示输入的开始，同时也不包含任何含义。在训练后，它汇总了句子所有的特征，可以用来继续下游的分类任务等，更加公平的融入后面的语义信息。</p>
