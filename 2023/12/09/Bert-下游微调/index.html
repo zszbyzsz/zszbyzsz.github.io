@@ -16,18 +16,20 @@
   <meta name="author" content="Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="微调： 1. 输入： 词嵌入Bert选择了WordPiece进行子词词元化。要满足Bert的要求 1.1 标记嵌入： [CLS]句子[SEP] 1.2 分段嵌入 [CLS]句子1[SEP]句子2[SEP] 1.3 位置嵌入 给出词序的具体位置信息 最后将上面的三个特征进行相加，即为输入特征，输入到Bert中。">
+    <meta name="description" content="微调： 1. 输入： 句子的输入要选择词嵌入Bert选择了WordPiece进行子词词元化。要满足Bert的要求 1.1 标记嵌入： [CLS]句子[SEP] 1.2 分段嵌入 [CLS]句子1[SEP]句子2[SEP] 1.3 位置嵌入 给出词序的具体位置信息 最后将上面的三个特征进行相加，即为输入特征，输入到Bert中。 2. 完成的下游任务： 句子经过Bert的token器后执行下列动作：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Bert-下游微调">
 <meta property="og:url" content="http://example.com/2023/12/09/Bert-%E4%B8%8B%E6%B8%B8%E5%BE%AE%E8%B0%83/index.html">
 <meta property="og:site_name" content="NLP">
-<meta property="og:description" content="微调： 1. 输入： 词嵌入Bert选择了WordPiece进行子词词元化。要满足Bert的要求 1.1 标记嵌入： [CLS]句子[SEP] 1.2 分段嵌入 [CLS]句子1[SEP]句子2[SEP] 1.3 位置嵌入 给出词序的具体位置信息 最后将上面的三个特征进行相加，即为输入特征，输入到Bert中。">
+<meta property="og:description" content="微调： 1. 输入： 句子的输入要选择词嵌入Bert选择了WordPiece进行子词词元化。要满足Bert的要求 1.1 标记嵌入： [CLS]句子[SEP] 1.2 分段嵌入 [CLS]句子1[SEP]句子2[SEP] 1.3 位置嵌入 给出词序的具体位置信息 最后将上面的三个特征进行相加，即为输入特征，输入到Bert中。 2. 完成的下游任务： 句子经过Bert的token器后执行下列动作：">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2023/12/09/images/bert/next_works.png">
 <meta property="article:published_time" content="2023-12-09T02:54:29.000Z">
-<meta property="article:modified_time" content="2023-12-09T09:24:09.473Z">
+<meta property="article:modified_time" content="2023-12-09T09:53:57.823Z">
 <meta property="article:author" content="Z">
 <meta property="article:tag" content="BERT">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2023/12/09/images/bert/next_works.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -249,7 +251,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          142 字
+          438 字
         
       </span>
     
@@ -260,7 +262,7 @@
         
         
         
-          2 分钟
+          4 分钟
         
       </span>
     
@@ -302,9 +304,10 @@
             
               <div class="markdown-body">
                 
-                <p>微调：</p>
+                <p><img src="../images/bert/next_works.png" srcset="/img/loading_1.gif" lazyload alt="下游任务"></p>
+<p>微调：</p>
 <h2 id="1-输入：">1. 输入：</h2>
-<p>词嵌入Bert选择了WordPiece进行子词词元化。要满足Bert的要求</p>
+<p>句子的输入要选择词嵌入Bert选择了WordPiece进行子词词元化。要满足Bert的要求</p>
 <h3 id="1-1-标记嵌入：">1.1 标记嵌入：</h3>
 <p>[CLS]句子[SEP]</p>
 <h3 id="1-2-分段嵌入">1.2 分段嵌入</h3>
@@ -312,6 +315,20 @@
 <h3 id="1-3-位置嵌入">1.3 位置嵌入</h3>
 <p>给出词序的具体位置信息</p>
 <p>最后将上面的三个特征进行相加，即为输入特征，输入到Bert中。</p>
+<h2 id="2-完成的下游任务：">2. 完成的下游任务：</h2>
+<p>句子经过Bert的token器后执行下列动作：</p>
+<h3 id="1-文本分类">1. 文本分类</h3>
+<p>输入：单句话：[CLS]句子[SEP]<br>
+输出：将输出的[CLS]经过softmax函数送入结果分类器。</p>
+<h3 id="2-自然语言推理">2. 自然语言推理</h3>
+<p>输入：单句话：[CLS]句子1[SEP]句子2[SEP]<br>
+输出：将输出的[CLS]经过softmax函数送入结果分类器。</p>
+<h3 id="3-机器问答">3. 机器问答</h3>
+<p>输入：单句话：[CLS]句子1[SEP]句子2[SEP]<br>
+输出：将输出的问答句子[SEP]句子2[SEP],使用softmax后计算答案的起始位置与结束位置</p>
+<h3 id="4-命名实体识别">4. 命名实体识别</h3>
+<p>输入：单句话：[CLS]句子[SEP]<br>
+输出：所有特征经softmax后送入分类器中</p>
 
                 
               </div>

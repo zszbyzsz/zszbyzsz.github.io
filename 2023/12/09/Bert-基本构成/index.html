@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2023/12/09/images/bert/bert_framworks.jpg">
 <meta property="article:published_time" content="2023-12-09T02:54:08.000Z">
-<meta property="article:modified_time" content="2023-12-09T09:16:19.864Z">
+<meta property="article:modified_time" content="2023-12-09T09:31:45.896Z">
 <meta property="article:author" content="Z">
 <meta property="article:tag" content="BERT">
 <meta name="twitter:card" content="summary_large_image">
@@ -348,9 +348,10 @@ Embedding的数学本质，就是以one hot为输入的单层全连接。<br>
 </tr>
 </tbody>
 </table>
-<p><strong>GELU</strong> : ReLU会确定性的将输入乘上一个0或者1(当x&lt;0时乘上0，否则乘上1)，Dropout则是随机乘上0。而GELU虽然也是将输入乘上0或1，但是输入到底是乘以0还是1，是在取决于输入自身的情况下随机选择的。<br>
+<p><strong>GELU</strong> :<br>
+ReLU会确定性的将输入乘上一个0或者1(当x&lt;0时乘上0，否则乘上1)，Dropout则是随机乘上0。而GELU虽然也是将输入乘上0或1，但是输入到底是乘以0还是1，是在取决于输入自身的情况下随机选择的。<br>
 所以，GELU的优点就是在ReLU上增加随机因素，x越小越容易被mask掉。<br>
-预热：<br>
+<strong>预热</strong>：<br>
 1）这样可以使得学习率可以适应不同的训练集合size<br>
 实验的时候经常需要先使用小的数据集训练验证模型，然后换大的数据集做生成环境模型训练。<br>
 2）即使不幸学习率设置得很大，那么也能通过warmup机制看到合适的学习率区间（即训练误差先降后升的关键位置附近），以便后续验证</p>
