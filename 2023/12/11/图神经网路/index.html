@@ -16,25 +16,29 @@
   <meta name="author" content="Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="微调： 1. 输入： 句子的输入要选择词嵌入Bert选择了WordPiece进行子词词元化。要满足Bert的要求 1.1 标记嵌入： [CLS]句子[SEP] 1.2 分段嵌入 [CLS]句子1[SEP]句子2[SEP] 1.3 位置嵌入 给出词序的具体位置信息 最后将上面的三个特征进行相加，即为输入特征，输入到Bert中。 2. 完成的下游任务： 句子经过Bert的token器后执行下列动作：">
+    <meta name="description" content="十分推荐英文版的：[图神经网络解析](A Gentle Introduction to Graph Neural Networks (distill.pub)) V: E: U: 我们知道存在很多网络：社交网络，鸟群网络，但是图片和文字依然可以通过网络构成。 图片： 将图片的位置转成一列，然后分成相同的横纵坐标，对于连接的横纵坐标进行标记。 文字： 同样的方式横纵坐标都进行标记。     图 神">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BERT-下游任务">
-<meta property="og:url" content="http://example.com/2023/12/09/BERT-%E4%B8%8B%E6%B8%B8%E4%BB%BB%E5%8A%A1/index.html">
+<meta property="og:title" content="图神经网路">
+<meta property="og:url" content="http://example.com/2023/12/11/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E8%B7%AF/index.html">
 <meta property="og:site_name" content="NLP">
-<meta property="og:description" content="微调： 1. 输入： 句子的输入要选择词嵌入Bert选择了WordPiece进行子词词元化。要满足Bert的要求 1.1 标记嵌入： [CLS]句子[SEP] 1.2 分段嵌入 [CLS]句子1[SEP]句子2[SEP] 1.3 位置嵌入 给出词序的具体位置信息 最后将上面的三个特征进行相加，即为输入特征，输入到Bert中。 2. 完成的下游任务： 句子经过Bert的token器后执行下列动作：">
+<meta property="og:description" content="十分推荐英文版的：[图神经网络解析](A Gentle Introduction to Graph Neural Networks (distill.pub)) V: E: U: 我们知道存在很多网络：社交网络，鸟群网络，但是图片和文字依然可以通过网络构成。 图片： 将图片的位置转成一列，然后分成相同的横纵坐标，对于连接的横纵坐标进行标记。 文字： 同样的方式横纵坐标都进行标记。     图 神">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2023/12/09/BERT-%E4%B8%8B%E6%B8%B8%E4%BB%BB%E5%8A%A1/next_works.png">
-<meta property="article:published_time" content="2023-12-09T10:10:13.000Z">
-<meta property="article:modified_time" content="2023-12-09T10:10:32.495Z">
+<meta property="og:image" content="http://example.com/2023/12/11/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E8%B7%AF/graph_independent_layer.png">
+<meta property="og:image" content="http://example.com/2023/12/11/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E8%B7%AF/prediction_edges.png">
+<meta property="og:image" content="http://example.com/2023/12/11/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E8%B7%AF/prediction_nodes.png">
+<meta property="og:image" content="http://example.com/2023/12/11/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E8%B7%AF/prediction_global.png">
+<meta property="og:image" content="http://example.com/2023/12/11/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E8%B7%AF/Overall.png">
+<meta property="article:published_time" content="2023-12-11T07:32:03.000Z">
+<meta property="article:modified_time" content="2023-12-11T09:06:43.333Z">
 <meta property="article:author" content="Z">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2023/12/09/BERT-%E4%B8%8B%E6%B8%B8%E4%BB%BB%E5%8A%A1/next_works.png">
+<meta name="twitter:image" content="http://example.com/2023/12/11/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E8%B7%AF/graph_independent_layer.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>BERT-下游任务 - NLP</title>
+  <title>图神经网路 - NLP</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -227,7 +231,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="BERT-下游任务"></span>
+            <span id="subtitle" data-typed-text="图神经网路"></span>
           
         </div>
 
@@ -238,8 +242,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-09 18:10" pubdate>
-          2023年12月9日 晚上
+        <time datetime="2023-12-11 15:32" pubdate>
+          2023年12月11日 下午
         </time>
       </span>
     
@@ -250,7 +254,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          438 字
+          519 字
         
       </span>
     
@@ -261,7 +265,7 @@
         
         
         
-          4 分钟
+          5 分钟
         
       </span>
     
@@ -298,36 +302,90 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">BERT-下游任务</h1>
+            <h1 id="seo-header">图神经网路</h1>
             
             
               <div class="markdown-body">
                 
-                <p><img src="next_works.png" srcset="/img/loading_1.gif" lazyload alt="下游任务"></p>
-<p>微调：</p>
-<h2 id="1-输入：">1. 输入：</h2>
-<p>句子的输入要选择词嵌入Bert选择了WordPiece进行子词词元化。要满足Bert的要求</p>
-<h3 id="1-1-标记嵌入：">1.1 标记嵌入：</h3>
-<p>[CLS]句子[SEP]</p>
-<h3 id="1-2-分段嵌入">1.2 分段嵌入</h3>
-<p>[CLS]句子1[SEP]句子2[SEP]</p>
-<h3 id="1-3-位置嵌入">1.3 位置嵌入</h3>
-<p>给出词序的具体位置信息</p>
-<p>最后将上面的三个特征进行相加，即为输入特征，输入到Bert中。</p>
-<h2 id="2-完成的下游任务：">2. 完成的下游任务：</h2>
-<p>句子经过Bert的token器后执行下列动作：</p>
-<h3 id="1-文本分类">1. 文本分类</h3>
-<p>输入：单句话：[CLS]句子[SEP]<br>
-输出：将输出的[CLS]经过softmax函数送入结果分类器。</p>
-<h3 id="2-自然语言推理">2. 自然语言推理</h3>
-<p>输入：单句话：[CLS]句子1[SEP]句子2[SEP]<br>
-输出：将输出的[CLS]经过softmax函数送入结果分类器。</p>
-<h3 id="3-机器问答">3. 机器问答</h3>
-<p>输入：单句话：[CLS]句子1[SEP]句子2[SEP]<br>
-输出：将输出的问答句子[SEP]句子2[SEP],使用softmax后计算答案的起始位置与结束位置</p>
-<h3 id="4-命名实体识别">4. 命名实体识别</h3>
-<p>输入：单句话：[CLS]句子[SEP]<br>
-输出：所有特征经softmax后送入分类器中</p>
+                <p>十分推荐英文版的：[图神经网络解析](<a target="_blank" rel="noopener" href="https://distill.pub/2021/gnn-intro/">A Gentle Introduction to Graph Neural Networks (distill.pub)</a>)<br>
+V:<br>
+E:<br>
+U:</p>
+<p>我们知道存在很多网络：社交网络，鸟群网络，但是图片和文字依然可以通过网络构成。<br>
+图片：<br>
+将图片的位置转成一列，然后分成相同的横纵坐标，对于连接的横纵坐标进行标记。<br>
+文字：<br>
+同样的方式横纵坐标都进行标记。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>图</th>
+<th>神</th>
+<th>经</th>
+<th>网</th>
+<th>络</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>图</td>
+<td></td>
+<td>*</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>神</td>
+<td></td>
+<td></td>
+<td>*</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>经</td>
+<td></td>
+<td></td>
+<td></td>
+<td>*</td>
+<td></td>
+</tr>
+<tr>
+<td>网</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>*</td>
+</tr>
+<tr>
+<td>络</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1>图神经网络</h1>
+<h3 id="训练">训练</h3>
+<ol>
+<li>在传统的神经网络中更新的神经元，与神经元上面的权重。图神经网络更新的是边上的权重，更新方式为较简单的多层感知机。<br>
+<img src="graph_independent_layer.png" srcset="/img/loading_1.gif" lazyload alt="graph_independent_layer"></li>
+<li>点之间也包含信息，它也需要进行更新，更新的过程是通过对其所连接边的池化来更新。图中右上角点的池化表示。![[pooling.png]]</li>
+</ol>
+<h3 id="预测：">预测：</h3>
+<ol>
+<li>如果我们仅仅有边的信息，而需要预测点的信息，我们可以将关于变得信息转化为点的信息路由到预测点处。<img src="prediction_edges.png" srcset="/img/loading_1.gif" lazyload alt="预测点"></li>
+<li>同时如果仅仅有点的信息，而需要预测边的信息，预测模型如下：<img src="prediction_nodes.png" srcset="/img/loading_1.gif" lazyload alt="预测边信息"></li>
+<li>预测全局信息，我们需要将所有的节点信息进行聚合后得出结果。<img src="prediction_global.png" srcset="/img/loading_1.gif" lazyload alt="预测全局"></li>
+</ol>
+<h2 id="通用">通用</h2>
+<p>那么我们自然而然结合我们了解的深度学习的内容，可以对其进行网络更改，如下图，我们可以更改变换的多层感知机网络，将其换成RNN最后的分类我们使用其他的激活函数等<img src="Overall.png" srcset="/img/loading_1.gif" lazyload alt="通用"><br>
+这就是图神经网络。</p>
 
                 
               </div>
@@ -345,8 +403,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>BERT-下游任务</div>
-      <div>http://example.com/2023/12/09/BERT-下游任务/</div>
+      <div>图神经网路</div>
+      <div>http://example.com/2023/12/11/图神经网路/</div>
     </div>
     <div class="license-meta">
       
@@ -358,7 +416,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年12月9日</div>
+          <div>2023年12月11日</div>
         </div>
       
       
@@ -390,18 +448,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="../../11/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E8%B7%AF/" title="图神经网路">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">图神经网路</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="../BERT-%E6%A1%86%E6%9E%B6/" title="BERT-框架">
-                        <span class="hidden-mobile">BERT-框架</span>
+                      <a href="../../09/BERT-%E4%B8%8B%E6%B8%B8%E4%BB%BB%E5%8A%A1/" title="BERT-下游任务">
+                        <span class="hidden-mobile">BERT-下游任务</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

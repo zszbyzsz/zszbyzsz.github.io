@@ -4,6 +4,19 @@
   
   
   <entry>
+    <title>图神经网路</title>
+    <link href="/2023/12/11/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E8%B7%AF/"/>
+    <url>/2023/12/11/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E8%B7%AF/</url>
+    
+    <content type="html"><![CDATA[<p>十分推荐英文版的：[图神经网络解析](<a href="https://distill.pub/2021/gnn-intro/">A Gentle Introduction to Graph Neural Networks (distill.pub)</a>)<br>V:<br>E:<br>U:</p><p>我们知道存在很多网络：社交网络，鸟群网络，但是图片和文字依然可以通过网络构成。<br>图片：<br>将图片的位置转成一列，然后分成相同的横纵坐标，对于连接的横纵坐标进行标记。<br>文字：<br>同样的方式横纵坐标都进行标记。</p><table><thead><tr><th></th><th>图</th><th>神</th><th>经</th><th>网</th><th>络</th></tr></thead><tbody><tr><td>图</td><td></td><td>*</td><td></td><td></td><td></td></tr><tr><td>神</td><td></td><td></td><td>*</td><td></td><td></td></tr><tr><td>经</td><td></td><td></td><td></td><td>*</td><td></td></tr><tr><td>网</td><td></td><td></td><td></td><td></td><td>*</td></tr><tr><td>络</td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table><h1>图神经网络</h1><h3 id="训练">训练</h3><ol><li>在传统的神经网络中更新的神经元，与神经元上面的权重。图神经网络更新的是边上的权重，更新方式为较简单的多层感知机。<br><img src="graph_independent_layer.png" alt="graph_independent_layer"></li><li>点之间也包含信息，它也需要进行更新，更新的过程是通过对其所连接边的池化来更新。图中右上角点的池化表示。![[pooling.png]]</li></ol><h3 id="预测：">预测：</h3><ol><li>如果我们仅仅有边的信息，而需要预测点的信息，我们可以将关于变得信息转化为点的信息路由到预测点处。<img src="prediction_edges.png" alt="预测点"></li><li>同时如果仅仅有点的信息，而需要预测边的信息，预测模型如下：<img src="prediction_nodes.png" alt="预测边信息"></li><li>预测全局信息，我们需要将所有的节点信息进行聚合后得出结果。<img src="prediction_global.png" alt="预测全局"></li></ol><h2 id="通用">通用</h2><p>那么我们自然而然结合我们了解的深度学习的内容，可以对其进行网络更改，如下图，我们可以更改变换的多层感知机网络，将其换成RNN最后的分类我们使用其他的激活函数等<img src="Overall.png" alt="通用"><br>这就是图神经网络。</p>]]></content>
+    
+    
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>BERT-下游任务</title>
     <link href="/2023/12/09/BERT-%E4%B8%8B%E6%B8%B8%E4%BB%BB%E5%8A%A1/"/>
     <url>/2023/12/09/BERT-%E4%B8%8B%E6%B8%B8%E4%BB%BB%E5%8A%A1/</url>
