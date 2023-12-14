@@ -16,29 +16,23 @@
   <meta name="author" content="Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="十分推荐英文版的：[图神经网络解析](A Gentle Introduction to Graph Neural Networks (distill.pub)) V: E: U: 我们知道存在很多网络：社交网络，鸟群网络，但是图片和文字依然可以通过网络构成。 图片： 将图片的位置转成一列，然后分成相同的横纵坐标，对于连接的横纵坐标进行标记。 文字： 同样的方式横纵坐标都进行标记。     图 神">
+    <meta name="description" content="Here&#39;s something encrypted, password is required to continue reading.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="图神经网路">
-<meta property="og:url" content="http://example.com/2023/12/11/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E8%B7%AF/index.html">
+<meta property="og:title" content="LLM八股文">
+<meta property="og:url" content="http://example.com/2023/12/14/LLM%E5%85%AB%E8%82%A1%E6%96%87/index.html">
 <meta property="og:site_name" content="NLP">
-<meta property="og:description" content="十分推荐英文版的：[图神经网络解析](A Gentle Introduction to Graph Neural Networks (distill.pub)) V: E: U: 我们知道存在很多网络：社交网络，鸟群网络，但是图片和文字依然可以通过网络构成。 图片： 将图片的位置转成一列，然后分成相同的横纵坐标，对于连接的横纵坐标进行标记。 文字： 同样的方式横纵坐标都进行标记。     图 神">
+<meta property="og:description" content="Here&#39;s something encrypted, password is required to continue reading.">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2023/12/11/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E8%B7%AF/graph_independent_layer.png">
-<meta property="og:image" content="http://example.com/2023/12/11/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E8%B7%AF/prediction_edges.png">
-<meta property="og:image" content="http://example.com/2023/12/11/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E8%B7%AF/prediction_nodes.png">
-<meta property="og:image" content="http://example.com/2023/12/11/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E8%B7%AF/prediction_global.png">
-<meta property="og:image" content="http://example.com/2023/12/11/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E8%B7%AF/Overall.png">
-<meta property="article:published_time" content="2023-12-11T07:32:03.000Z">
-<meta property="article:modified_time" content="2023-12-11T09:06:43.333Z">
+<meta property="article:published_time" content="2023-12-14T01:07:01.000Z">
+<meta property="article:modified_time" content="2023-12-14T01:08:35.476Z">
 <meta property="article:author" content="Z">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2023/12/11/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E8%B7%AF/graph_independent_layer.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>图神经网路 - NLP</title>
+  <title>LLM八股文 - NLP</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -231,7 +225,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="图神经网路"></span>
+            <span id="subtitle" data-typed-text="LLM八股文"></span>
           
         </div>
 
@@ -242,8 +236,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-12-11 15:32" pubdate>
-          2023年12月11日 下午
+        <time datetime="2023-12-14 09:07" pubdate>
+          2023年12月14日 上午
         </time>
       </span>
     
@@ -254,7 +248,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          519 字
+          646 字
         
       </span>
     
@@ -265,7 +259,7 @@
         
         
         
-          5 分钟
+          6 分钟
         
       </span>
     
@@ -302,93 +296,25 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">图神经网路</h1>
+            <h1 id="seo-header">LLM八股文</h1>
             
             
-              <div class="markdown-body">
-                
-                <p>十分推荐英文版的：[图神经网络解析](<a target="_blank" rel="noopener" href="https://distill.pub/2021/gnn-intro/">A Gentle Introduction to Graph Neural Networks (distill.pub)</a>)<br>
-V:<br>
-E:<br>
-U:</p>
-<p>我们知道存在很多网络：社交网络，鸟群网络，但是图片和文字依然可以通过网络构成。<br>
-图片：<br>
-将图片的位置转成一列，然后分成相同的横纵坐标，对于连接的横纵坐标进行标记。<br>
-文字：<br>
-同样的方式横纵坐标都进行标记。</p>
-<table>
-<thead>
-<tr>
-<th></th>
-<th>图</th>
-<th>神</th>
-<th>经</th>
-<th>网</th>
-<th>络</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>图</td>
-<td></td>
-<td>*</td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>神</td>
-<td></td>
-<td></td>
-<td>*</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>经</td>
-<td></td>
-<td></td>
-<td></td>
-<td>*</td>
-<td></td>
-</tr>
-<tr>
-<td>网</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>*</td>
-</tr>
-<tr>
-<td>络</td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h1>图神经网络</h1>
-<h3 id="训练">训练</h3>
-<ol>
-<li>在传统的神经网络中更新的神经元，与神经元上面的权重。图神经网络更新的是边上的权重，更新方式为较简单的多层感知机。<br>
-<img src="graph_independent_layer.png" srcset="/img/loading_1.gif" lazyload alt="graph_independent_layer"></li>
-<li>点之间也包含信息，它也需要进行更新，更新的过程是通过对其所连接边的池化来更新。图中右上角点的池化表示。![[pooling.png]]</li>
-</ol>
-<h3 id="预测：">预测：</h3>
-<ol>
-<li>如果我们仅仅有边的信息，而需要预测点的信息，我们可以将关于变得信息转化为点的信息路由到预测点处。<img src="prediction_edges.png" srcset="/img/loading_1.gif" lazyload alt="预测点"></li>
-<li>同时如果仅仅有点的信息，而需要预测边的信息，预测模型如下：<img src="prediction_nodes.png" srcset="/img/loading_1.gif" lazyload alt="预测边信息"></li>
-<li>预测全局信息，我们需要将所有的节点信息进行聚合后得出结果。<img src="prediction_global.png" srcset="/img/loading_1.gif" lazyload alt="预测全局"></li>
-</ol>
-<h2 id="通用">通用</h2>
-<p>那么我们自然而然结合我们了解的深度学习的内容，可以对其进行网络更改，如下图，我们可以更改变换的多层感知机网络，将其换成RNN最后的分类我们使用其他的激活函数等<img src="Overall.png" srcset="/img/loading_1.gif" lazyload alt="通用"><br>
-这就是图神经网络。</p>
+              
+              <div class="hbe hbe-container" id="hexo-blog-encrypt" data-wpm="Oh, this is an invalid password. Check and try again, please." data-whm="OOPS, these decrypted content may changed, but you can still have a look.">
+  <script id="hbeData" type="hbeData" data-hmacdigest="957c95260dd4bc1ec4c1617ba9925af34280956ac986247c594fd0c90ed66c77">72824056ffc40a167a9475e9c98771f5e22715c69a763cdf289229581c7da54d2488d074317ee96ad5c74ea35605c4daf74ff489135ad064d9f19f76e28f45e833326d965db95fcf0ac7b6282112b08100824cffe41cef07afb32052da7774f3318ddc49df42f12dcde522551df326c9804d8a96173f12ec4984c0db7a431035d6bbfcc3f865457fc64faa9153f6628033d51f3a0667a1d719f0ece9d3f66421e64c2b3e4a67cb2e51b2b6505d18f3fedc81ee40cbccbb7452155f9a42e2037a3feaa2f6f7089b0676863ffc54c4c6666f4193650868ebea44dd3c11f43fe1520f10514394eb0ad4b2fd4b4d6afb56b6654c56dc34a8b9a1bec6a921a1ced03caa473127e0ac94e3dc421400b3c9a5ff73e2dce7cb3d85a36bc854738e88b67c056188dafd1413e222858ed3899c4051236447b84557d9646c641140ff04400b</script>
+  <div class="hbe hbe-content">
+    <div class="hbe hbe-input hbe-input-default">
+      <input class="hbe hbe-input-field hbe-input-field-default" type="password" id="hbePass">
+      <label class="hbe hbe-input-label hbe-input-label-default" for="hbePass">
+        <span class="hbe hbe-input-label-content hbe-input-label-content-default">输入邀请密码</span>
+      </label>
+    </div>
+  </div>
+</div>
+<script data-pjax src="/lib/hbe.js"></script><link href="/css/hbe.style.css" rel="stylesheet" type="text/css">
+              
 
-                
-              </div>
+              
             
             <hr/>
             <div>
@@ -403,8 +329,8 @@ U:</p>
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>图神经网路</div>
-      <div>http://example.com/2023/12/11/图神经网路/</div>
+      <div>LLM八股文</div>
+      <div>http://example.com/2023/12/14/LLM八股文/</div>
     </div>
     <div class="license-meta">
       
@@ -416,7 +342,7 @@ U:</p>
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年12月11日</div>
+          <div>2023年12月14日</div>
         </div>
       
       
@@ -448,18 +374,12 @@ U:</p>
                   <article class="post-prev col-6">
                     
                     
-                      <a href="../../14/LLM%E5%85%AB%E8%82%A1%E6%96%87/" title="LLM八股文">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">LLM八股文</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="../../09/BERT-%E4%B8%8B%E6%B8%B8%E4%BB%BB%E5%8A%A1/" title="BERT-下游任务">
-                        <span class="hidden-mobile">BERT-下游任务</span>
+                      <a href="../../11/%E5%9B%BE%E7%A5%9E%E7%BB%8F%E7%BD%91%E8%B7%AF/" title="图神经网路">
+                        <span class="hidden-mobile">图神经网路</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -648,6 +568,23 @@ U:</p>
   
 
 
+
+
+  
+  <script defer>
+    if (document.getElementById('hbePass') || document.querySelector('hbe-prefix')) {
+      Fluid.utils.waitElementLoaded('hbe-prefix', function() {
+        var hbePrefix = document.querySelector('hbe-prefix');
+        hbePrefix.parentElement.classList.add('markdown-body');
+        Fluid.utils.retry(function() {
+          if (Fluid.boot && Fluid.boot.refresh) {
+            Fluid.boot.refresh();
+            return true;
+          }
+        }, 100, 10);
+      })
+    }
+  </script>
 
 
   
