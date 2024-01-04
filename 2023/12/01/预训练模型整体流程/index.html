@@ -16,15 +16,15 @@
   <meta name="author" content="Z">
   <meta name="keywords" content="">
   
-    <meta name="description" content="graph TB A(载入预训练模型) --&gt; B(重载模型) B --加入--&gt; C(学习率) B --加入--&gt; D(优化器) B --加入--&gt; E(损失函数) C --&gt; F(初始化热身) D --&gt; F(初始化热身) E --&gt; F(初始化热身) F --&gt; G(训练) subgraph 每个epoch     G --&gt; H(计算损">
+    <meta name="description" content="graph TB A(载入预训练模型) --&gt; B(重载模型) B --加入--&gt; C(学习率) B --加入--&gt; D(优化器) B --加入--&gt; E(损失函数) C --&gt; F(初始化热身) D --&gt; F(初始化热身) E --&gt; F(初始化热身) F --&gt; G(训练) subgraph 每个epoch     G --&gt; H(计算损失)    H --更新--&gt; H end H --一">
 <meta property="og:type" content="article">
 <meta property="og:title" content="预训练模型整体流程">
 <meta property="og:url" content="http://example.com/2023/12/01/%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B%E6%95%B4%E4%BD%93%E6%B5%81%E7%A8%8B/index.html">
 <meta property="og:site_name" content="NLP">
-<meta property="og:description" content="graph TB A(载入预训练模型) --&gt; B(重载模型) B --加入--&gt; C(学习率) B --加入--&gt; D(优化器) B --加入--&gt; E(损失函数) C --&gt; F(初始化热身) D --&gt; F(初始化热身) E --&gt; F(初始化热身) F --&gt; G(训练) subgraph 每个epoch     G --&gt; H(计算损">
+<meta property="og:description" content="graph TB A(载入预训练模型) --&gt; B(重载模型) B --加入--&gt; C(学习率) B --加入--&gt; D(优化器) B --加入--&gt; E(损失函数) C --&gt; F(初始化热身) D --&gt; F(初始化热身) E --&gt; F(初始化热身) F --&gt; G(训练) subgraph 每个epoch     G --&gt; H(计算损失)    H --更新--&gt; H end H --一">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2023-12-01T09:10:05.000Z">
-<meta property="article:modified_time" content="2024-01-04T03:14:46.483Z">
+<meta property="article:modified_time" content="2024-01-04T03:15:57.421Z">
 <meta property="article:author" content="Z">
 <meta property="article:tag" content="工程实践">
 <meta property="article:tag" content="模型训练">
@@ -250,7 +250,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          204 字
+          171 字
         
       </span>
     
@@ -303,22 +303,20 @@
             
               <div class="markdown-body">
                 
-                <pre><code class="language-mermaid">graph TB
-A(载入预训练模型) --&gt; B(重载模型)
-B --加入--&gt; C(学习率)
-B --加入--&gt; D(优化器)
-B --加入--&gt; E(损失函数)
-C --&gt; F(初始化热身)
-D --&gt; F(初始化热身)
-E --&gt; F(初始化热身)
-F --&gt; G(训练)
+                <pre class="mermaid">graph TB
+A(载入预训练模型) --> B(重载模型)
+B --加入--> C(学习率)
+B --加入--> D(优化器)
+B --加入--> E(损失函数)
+C --> F(初始化热身)
+D --> F(初始化热身)
+E --> F(初始化热身)
+F --> G(训练)
 subgraph 每个epoch 
-   G --&gt; H(计算损失)
-   H --更新--&gt; H
+   G --> H(计算损失)
+   H --更新--> H
 end
-H --一定周期或条件--&gt; Z(结束) 
-
-</code></pre>
+H --一定周期或条件--> Z(结束)</pre>
 
                 
               </div>
@@ -465,7 +463,7 @@ H --一定周期或条件--&gt; Z(结束)
 
 
   <script>
-  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/9.6.0/mermaid.min.js', function() {
+  Fluid.utils.createScript('https://lib.baomitu.com/mermaid/10.0.0/mermaid.min.js', function() {
     mermaid.initialize({"theme":"default"});
 
     Fluid.utils.listenDOMLoaded(function() {
